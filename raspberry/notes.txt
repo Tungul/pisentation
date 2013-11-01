@@ -1,1 +1,0 @@
-Here, the raspberry will serve the image via a webserver, as well as Javascript for auto-refresh.

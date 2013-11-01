@@ -1,1 +1,0 @@
-This end will watch for modifications to the screenshots directory, then will upload file to pi, either via SSH or by webserver on android

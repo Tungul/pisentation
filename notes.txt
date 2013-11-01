@@ -1,0 +1,14 @@
+The android device will run a python server that, utilizing threaded systems;
+
+1: Monitor the screenshots directory for added files, and move them to /sdcard/pisentation/current.jpg (or whatever filetype it uses) overwriting the existing current image file.
+2: Run a "webserver" that, no matter what it receives, will always send back a webpage that contins the image (possibly stretched to fit better (settings?)) and a simple piece of javascript that will cause it to refresh the page every few seconds (also a setting!!)
+
+The android device will utilize either SL4A or the QPython application, both of which are free, some of which are slightly more stupid than the other.
+
+The raspberry's sole purpose is to provide a web browser to see the android devices screen.
+It might also run a wifi access point to allow for easier viewing (needing only a projector/television, raspberry (with wifi dongle), and tablet. no wifi network needed)
+
+
+The primary benefit to this system is that the tablet can share it's screen using the default, stock, screenshot functionality to ANY device with a web browser. It doesn't even have to run javascript, just push f5.
+
+It doesn't allow for sharing of videos (html5 video functionality maybe?) or any kind of transition, only static screens, but it allows for 'privacy' while presenting. You can switch apps without the whole audience observing your desktop settings or whatnot, without having to pause the screen share.
