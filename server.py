@@ -1,8 +1,9 @@
 import threading, sockets, os, time
 
+startWebserver = False
 shutdown = False
-debug = True
-screendir = "sdcard/Pictures/Screenshots"
+# debug = True
+screendir = "/sdcard/Pictures/Screenshots"
 
 preexisting_files = os.listdir(screendir)
 
@@ -10,7 +11,10 @@ def checkFileListUpdate():
 	current_files = os.listdir(screendir)
 	for i in current_files:
 		if i not in preexisting_files:
-			# move file to webserver directory
+			try:
+				os.rename("/sdcard/Pictures/Screenshots/" + i, "/sdcard/pisentation/i.png")
+			catch:
+				print "what did you even DO tocause an error here?"
 
 class Webserver(threading.Thread): # figure out how webservers work in python
 	def __init__(self):
@@ -35,9 +39,11 @@ class ScreenshotMonitor(threading.Thread):
 			except: # some error
 				continue
 
-webServer = Webserver()
+if startWebserver:
+	webServer = Webserver()
+	webServer.start()
+
 screenShotMonitor = ScreenshotMonitor()
-webServer.start()
 screenShotMonitor.start()
 
 while True:
