@@ -1,8 +1,10 @@
-import threading, sockets
+import threading, sockets, os
 
 shutdown = False
 
 # create an array or something of existing files in the screenshots directory, for comparison later.
+
+existing_files = os.listdir("/sdcard/Pictures/Screenshots")
 
 class Webserver(threading.Thread): # figure out how the hell webservers work in python
 	def __init__(self):
