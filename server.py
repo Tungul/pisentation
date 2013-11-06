@@ -6,7 +6,7 @@ shutdown = False
 
 existing_files = os.listdir("/sdcard/Pictures/Screenshots")
 
-class Webserver(threading.Thread): # figure out how the hell webservers work in python
+class Webserver(threading.Thread): # figure out how webservers work in python
 	def __init__(self):
 		threading.Thread.__init__(self)
 
@@ -25,6 +25,7 @@ class ScreenshotMonitor(threading.Thread):
 				if shutdown == True:
 					break
 				# check if a new file exists, then move it out
+				# use os.listdir()
 			except: # some error
 				continue
 
