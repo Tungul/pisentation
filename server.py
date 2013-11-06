@@ -1,19 +1,25 @@
-import threading, sockets, os
+import threading, sockets, os, time
 
 shutdown = False
+debug = True
+screendir = "sdcard/Pictures/Screenshots"
 
-# create an array or something of existing files in the screenshots directory, for comparison later.
+preexisting_files = os.listdir(screendir)
 
-existing_files = os.listdir("/sdcard/Pictures/Screenshots")
+def checkFileListUpdate():
+	current_files = os.listdir(screendir)
+	for i in current_files:
+		if i not in preexisting_files:
+			# move file to webserver directory
 
 class Webserver(threading.Thread): # figure out how webservers work in python
 	def __init__(self):
 		threading.Thread.__init__(self)
 
 	def run(self):
-		while True: # code here
+		while True: # code goes here # http://docs.python.org/2/howto/sockets.html
 			if shutdown == True:
-				break
+				break # can one exit() threads?
 
 class ScreenshotMonitor(threading.Thread):
 	def __init__(self):
@@ -23,9 +29,9 @@ class ScreenshotMonitor(threading.Thread):
 		while True:
 			try:
 				if shutdown == True:
-					break
-				# check if a new file exists, then move it out
-				# use os.listdir()
+					break # can one exit() threads?
+				checkFileListUpdate()
+				time.sleep(1)
 			except: # some error
 				continue
 
