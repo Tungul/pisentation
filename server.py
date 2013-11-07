@@ -1,20 +1,22 @@
-import threading, sockets, os, time
+import threading, socket, os, time
 
 startWebserver = False
 shutdown = False
 # debug = True
-screendir = "/sdcard/Pictures/Screenshots"
+indir = "screenin/"
+outdir = "screenout/"
 
-preexisting_files = os.listdir(screendir)
+preexisting_files = os.listdir(indir)
 
 def checkFileListUpdate():
-	current_files = os.listdir(screendir)
+	current_files = os.listdir(indir)
 	for i in current_files:
 		if i not in preexisting_files:
 			try:
-				os.rename("/sdcard/Pictures/Screenshots/" + i, "/sdcard/pisentation/i.png")
-			catch:
+				os.rename(indir + i, outdir + "i.png")
+			except:
 				print "what did you even DO to cause an error here?"
+				shutdown = True
 
 class Webserver(threading.Thread): # figure out how webservers work in python
 	def __init__(self):
@@ -22,7 +24,8 @@ class Webserver(threading.Thread): # figure out how webservers work in python
 
 	def run(self):
 		while True: # code goes here # http://docs.python.org/2/howto/sockets.html
-			if shutdown == True:
+			if shutdown:
+				print "shutting down webserver thread"
 				break # can one exit() threads?
 
 class ScreenshotMonitor(threading.Thread):
@@ -32,7 +35,8 @@ class ScreenshotMonitor(threading.Thread):
 	def run(self):
 		while True:
 			try:
-				if shutdown == True:
+				if shutdown:
+					print "shutting down screenshot monitor thread"
 					break # can one exit() threads?
 				checkFileListUpdate()
 				time.sleep(1)
@@ -51,5 +55,6 @@ while True:
 		pass
 	except KeyboardInterrupt:
 		shutdown = True
+		print "shutting down threads..."
 
 quit()
