@@ -14,7 +14,7 @@ def checkFileListUpdate():
 			try:
 				os.rename("/sdcard/Pictures/Screenshots/" + i, "/sdcard/pisentation/i.png")
 			catch:
-				print "what did you even DO tocause an error here?"
+				print "what did you even DO to cause an error here?"
 
 class Webserver(threading.Thread): # figure out how webservers work in python
 	def __init__(self):
