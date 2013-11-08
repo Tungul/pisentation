@@ -49,7 +49,7 @@ class ScreenshotMonitor(threading.Thread):
 					print "shutting down screenshot monitor thread"
 					break # can one exit() threads?
 				checkFileListUpdate()
-				time.sleep(1)
+				time.sleep(0.25)
 			except: # some error
 				continue
 
