@@ -1,5 +1,11 @@
 import threading, socket, os, time
 
+try:
+	import androidhelper
+	droid = androidhelper.Android()
+except:
+	print "oops, not on android."
+
 startWebserver = False
 shutdown = False
 # debug = True
@@ -16,6 +22,10 @@ def checkFileListUpdate():
 		if i not in preexisting_files:
 			try:
 				os.rename(indir + i, outdir + "i.png")
+				try:
+					droid.alert("Screen ready.")
+				except:
+					print "oopsies, no android."
 			except:
 				print "what did you even DO to cause an error here?"
 				shutdown = True
