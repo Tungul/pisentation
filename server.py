@@ -8,9 +8,6 @@ except:
 
 startWebserver = False
 shutdown = False
-# debug = True
-# indir = "screenin/"
-# outdir = "screenout/"
 indir = "/sdcard/Pictures/Screenshots/" # android paths
 outdir = "/sdcard/pisentation/" 
 
@@ -29,15 +26,6 @@ def checkFileListUpdate():
 			except:
 				print "what did you even DO to cause an error here?"
 				shutdown = True
-
-#class Webserver(threading.Thread): # figure out how webservers work in python
-#	def __init__(self):
-#		threading.Thread.__init__(self)
-#	def run(self):
-#		while True: # code goes here # http://docs.python.org/2/howto/sockets.html
-#			if shutdown:
-#				print "shutting down webserver thread"
-#				break # can one exit() threads?
 
 class ScreenshotMonitor(threading.Thread):
 	def __init__(self):
