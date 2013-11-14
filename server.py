@@ -41,10 +41,6 @@ class ScreenshotMonitor(threading.Thread):
 			except: # some error
 				continue
 
-if startWebserver:
-	webServer = Webserver()
-	webServer.start()
-
 screenShotMonitor = ScreenshotMonitor()
 screenShotMonitor.start()
 
